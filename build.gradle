@@ -1,0 +1,26 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.12'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.zrq'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.5'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.2'
+	implementation 'mysql:mysql-connector-java:8.0.19'
+	implementation 'com.alibaba:druid-spring-boot-starter:1.2.4'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
