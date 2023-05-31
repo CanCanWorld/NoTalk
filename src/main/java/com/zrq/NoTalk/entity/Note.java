@@ -8,6 +8,7 @@ public class Note {
     private int id;
     private String time;
     private String content;
+    private String title;
     private int uid;
     @TableField(exist = false)
     private User user;
@@ -18,6 +19,7 @@ public class Note {
                 "id=" + id +
                 ", time='" + time + '\'' +
                 ", content='" + content + '\'' +
+                ", title='" + title + '\'' +
                 ", uid=" + uid +
                 ", user=" + user +
                 '}';
@@ -45,6 +47,14 @@ public class Note {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getUid() {

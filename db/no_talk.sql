@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 30/05/2023 14:21:44
+ Date: 31/05/2023 18:04:13
 */
 
 SET NAMES utf8mb4;
@@ -26,22 +26,23 @@ CREATE TABLE `t_note`  (
   `uid` int(11) NOT NULL,
   `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_note
 -- ----------------------------
-INSERT INTO `t_note` VALUES (1, 1, '1', '1');
-INSERT INTO `t_note` VALUES (2, 1, '2023', 'test');
-INSERT INTO `t_note` VALUES (3, 1, '2023', 'test');
-INSERT INTO `t_note` VALUES (4, 1, '2023', 'test');
-INSERT INTO `t_note` VALUES (5, 1, '2023', 'test');
-INSERT INTO `t_note` VALUES (6, 2, '2023', 'test');
-INSERT INTO `t_note` VALUES (7, 2, '2023', 'test');
-INSERT INTO `t_note` VALUES (8, 2, '2023', 'test');
-INSERT INTO `t_note` VALUES (9, 2, '2023', 'test');
-INSERT INTO `t_note` VALUES (10, 5, '2023', 'test');
+INSERT INTO `t_note` VALUES (1, 1, '1', '1', 'title');
+INSERT INTO `t_note` VALUES (2, 1, '2023', 'test', 'title');
+INSERT INTO `t_note` VALUES (3, 1, '2023', 'test', 'title');
+INSERT INTO `t_note` VALUES (4, 1, '2023', 'test', 'title');
+INSERT INTO `t_note` VALUES (5, 1, '2023', 'test', 'title');
+INSERT INTO `t_note` VALUES (6, 2, '2023', 'test', 'title');
+INSERT INTO `t_note` VALUES (7, 2, '2023', 'test', 'title');
+INSERT INTO `t_note` VALUES (8, 2, '2023', 'test', 'title');
+INSERT INTO `t_note` VALUES (9, 2, '2023', 'test', 'title');
+INSERT INTO `t_note` VALUES (10, 5, '2023', 'test', 'title');
 
 -- ----------------------------
 -- Table structure for t_user
@@ -52,7 +53,7 @@ CREATE TABLE `t_user`  (
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user
