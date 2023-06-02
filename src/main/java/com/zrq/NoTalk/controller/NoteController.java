@@ -34,9 +34,9 @@ public class NoteController {
     }
 
     @PostMapping("/note")
-    public int addNote(Note note) {
+    public boolean addNote(Note note) {
         int insert = noteMapper.insert(note);
-        return insert;
+        return insert > 0;
     }
 
 }

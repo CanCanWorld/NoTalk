@@ -40,14 +40,14 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public boolean login(User user) {
+    public User login(User user) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         HashMap<String, Object> map = new HashMap<>();
         map.put("username", user.getUsername());
         map.put("password", user.getPassword());
         queryWrapper.allEq(map);
-        List<User> users = userMapper.selectList(queryWrapper);
-        return users.size() > 0;
+        User u = userMapper.selectOne(queryWrapper);
+        return u;
     }
 
 }
