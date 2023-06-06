@@ -2,8 +2,9 @@ package com.zrq.NoTalk.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zrq.NoTalk.entity.Image;
+import com.zrq.NoTalk.entity.Img;
 import com.zrq.NoTalk.entity.User;
-import com.zrq.NoTalk.mapper.ImageMapper;
+import com.zrq.NoTalk.mapper.ImgMapper;
 import com.zrq.NoTalk.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,26 +23,26 @@ public class ImageController {
     @Autowired
     private UserMapper userMapper;
     @Autowired
-    private ImageMapper imageMapper;
+    private ImgMapper imageMapper;
 
-        private static final String UPLOADED_FOLDER = System.getProperty("user.dir") + "/img/";
-//    private static final String UPLOADED_FOLDER = "D:/img/img/";
+    private static final String UPLOADED_FOLDER = "http://8.140.61.64:9999/";
 
     @PostMapping("img")
-    public Boolean uploadImage(Image image, MultipartFile file, HttpServletRequest request) throws IOException {
-        System.out.println("Size:" + file.getSize());
+    public Boolean uploadImage( Image image , MultipartFile file, HttpServletRequest request) throws IOException {
         String originalFilename = file.getOriginalFilename();
-        System.out.println("OriginalFilename:" + originalFilename);
-        System.out.println("Name:" + file.getName());
-        String name = image.getName();
-        final String path = request.getServletContext().getRealPath("/img/");
+        final String basePath = request.getServletContext().getRealPath("/img/");
+        System.out.println(basePath);
+        String filePath = basePath + image.getUid() + "_" + image.getTime();
+        String path = UPLOADED_FOLDER + image.getUid() + "_" + image.getTime();
 
         if (originalFilename != null) {
             int indexOf = originalFilename.lastIndexOf(".");
             String substring = originalFilename.substring(indexOf);
-            name = name + substring;
+            path = path + substring;
+            filePath = filePath + substring;
         }
-        saveFile(path ,name, file);
+        image.setPath(path);
+        saveFile(basePath, filePath, file);
         int insert = imageMapper.insert(image);
         return insert > 0;
     }
@@ -49,6 +50,9 @@ public class ImageController {
     @GetMapping("img")
     public List<Image> getImages() {
         List<Image> images = imageMapper.selectList(null);
+        for (Image image : images) {
+            System.out.println(image);
+        }
         for (Image image : images) {
             QueryWrapper<User> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("id", image.getUid());
@@ -58,13 +62,12 @@ public class ImageController {
         return images;
     }
 
-    private void saveFile(String path , String name, MultipartFile file) throws IOException {
-        final File dir = new File(path);
-        System.out.println(path);
+    private void saveFile(String basePath, String filePath, MultipartFile file) throws IOException {
+        final File dir = new File(basePath);
         if (!dir.exists()) {
             dir.mkdir();
         }
-        final File newFile = new File(path + name);
+        final File newFile = new File(filePath);
         file.transferTo(newFile);
     }
 
