@@ -4,24 +4,24 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("t_img")
-public class Image {
+public class Img {
 
     private int id;
     private int uid;
     private String time;
     private String path;
-    private String title;
+    private String desc;
     @TableField(exist = false)
     private User user;
 
     @Override
     public String toString() {
-        return "Image{" +
+        return "Img{" +
                 "id=" + id +
                 ", uid=" + uid +
                 ", time='" + time + '\'' +
                 ", path='" + path + '\'' +
-                ", title='" + title + '\'' +
+                ", desc='" + desc + '\'' +
                 ", user=" + user +
                 '}';
     }
@@ -58,12 +58,12 @@ public class Image {
         this.path = path;
     }
 
-    public String getTitle() {
-        return title;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public User getUser() {
