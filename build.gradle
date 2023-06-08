@@ -15,7 +15,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.5'
 	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.projectlombok:lombok:1.18.26'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.2'
 	implementation 'mysql:mysql-connector-java:8.0.19'
 	implementation 'com.alibaba:druid-spring-boot-starter:1.2.4'
