@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 05/06/2023 18:28:37
+ Date: 09/06/2023 09:07:14
 */
 
 SET NAMES utf8mb4;
@@ -23,22 +23,25 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `t_img`;
 CREATE TABLE `t_img`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `uid` int(11) NOT NULL,
-  `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_img
 -- ----------------------------
-INSERT INTO `t_img` VALUES (1, 'test', 1, '2023');
-INSERT INTO `t_img` VALUES (2, 'test2', 1, '2023');
-INSERT INTO `t_img` VALUES (3, 'test3', 1, '2023');
-INSERT INTO `t_img` VALUES (4, 'test3', 1, '2023');
-INSERT INTO `t_img` VALUES (5, 'test', 1, '2023');
-INSERT INTO `t_img` VALUES (6, 'test', 1, '2023');
-INSERT INTO `t_img` VALUES (7, 'test', 1, '2023');
+INSERT INTO `t_img` VALUES (1, '1', 1, '1', '1');
+INSERT INTO `t_img` VALUES (17, 'miku', 1, '2023', 'http://8.140.61.64:9999/1_2023.png');
+INSERT INTO `t_img` VALUES (18, 'miku', 1, '123456', 'http://8.140.61.64:9999/1_123456.png');
+INSERT INTO `t_img` VALUES (19, 'miku', 1, '111', 'http://8.140.61.64:9999/1_111.png');
+INSERT INTO `t_img` VALUES (20, 'miku', 1, '111', 'http://8.140.61.64:9999/1_111.png');
+INSERT INTO `t_img` VALUES (21, 'miku', 1, '123', 'http://8.140.61.64:9999/1_123.png');
+INSERT INTO `t_img` VALUES (22, 'miku', 1, '123', 'http://8.140.61.64:9999/1_123.png');
+INSERT INTO `t_img` VALUES (23, 'miku', 1, '233', 'http://8.140.61.64:9999/img/1_233.png');
+INSERT INTO `t_img` VALUES (24, 'miku', 1, '20230608135206', 'http://8.140.61.64:9999/img/1_20230608135206.png');
 
 -- ----------------------------
 -- Table structure for t_note

@@ -33,18 +33,15 @@ public class ImageController {
 
     @PostMapping("img")
     public Boolean uploadImage(Image image, MultipartFile file, HttpServletRequest request) throws IOException {
-        String originalFilename = file.getOriginalFilename();
-//        final String basePath = request.getServletContext().getRealPath("/img/");
+        System.out.println("file:" + file);
+        System.out.println("image:" + image);
         System.out.println(basePath);
         String filePath = basePath + image.getUid() + "_" + image.getTime();
         String path = UPLOADED_FOLDER + image.getUid() + "_" + image.getTime();
 
-        if (originalFilename != null) {
-            int indexOf = originalFilename.lastIndexOf(".");
-            String substring = originalFilename.substring(indexOf);
-            path = path + substring;
-            filePath = filePath + substring;
-        }
+        String substring = ".jpg";
+        path = path + substring;
+        filePath = filePath + substring;
         image.setPath(path);
         saveFile(basePath, filePath, file);
         int insert = imageMapper.insert(image);
@@ -71,6 +68,8 @@ public class ImageController {
         if (!dir.exists()) {
             dir.mkdir();
         }
+        System.out.println(basePath);
+        System.out.println(filePath);
         final File newFile = new File(filePath);
         file.transferTo(newFile);
     }
